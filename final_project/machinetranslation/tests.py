@@ -1,13 +1,22 @@
 import unittest
+from deep_translator import MyMemoryTranslator
 from translator import english_to_french, french_to_english
-class TestEToF(unittest.TestCase): 
-    def Test1(self):
-        self.assertEqual(english_to_french('Hello'), 'Bonjour')
-        self.assertNotEqual(english_to_french('Hello'), 'Hello')
-    
-    def Test2(self):
-        self.assertEqual(french_to_english("Bonjour"), "Hello")
-        self.assertNotEqual(french_to_english("Bonjour"), "Bonjour")
+
+class TestMyModule(unittest.TestCase):
+    def test_english_to_french(self):
+        self.assertEqual(english_to_french('hello'),'bonjour')
+        self.assertEqual(english_to_french('goodbye'),'au revoir')
+        # Test None returns empty string
+        self.assertNotEqual(english_to_french("None"), '')
         
-    if __name__ == "__main__":    
-        unittest.main()
+
+class TestMyModuleFrToEng(unittest.TestCase):
+    def test_french_to_english(self):
+        self.assertEqual(french_to_english('bonjour'),'hello')
+        self.assertEqual(french_to_english('au revoir'),'goodbye')
+        # Test None returns empty string
+        self.assertNotEqual(french_to_english("None"), '')
+        
+        
+
+unittest.main()
